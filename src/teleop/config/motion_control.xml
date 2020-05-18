@@ -1,0 +1,14 @@
+<!-- Motion control parameters -->
+<launch>
+<!-- rover specific parameters [m] -->
+<param name = "WHEEL_BASE" type = "double" value = "0.608" />
+<param name = "WHEEL_TRACK" type = "double" value = "0.560" />
+<param name = "WHEEL_RADIUS" type = "double" value = "0.09" />
+<!-- default max speed values [m/s] -->
+<param name = "DEF_MAXSPEED" type = "double" value = "0.1" />
+<param name = "DEF_MAX_PNT_TURN_SPEED" type = "double" value = "0.2" />
+<!-- default min turning radius [m] -->
+<param name = "DEF_MINTURNRAD" type = "double" value = "0.51" /> <!--max angle 50deg-->
+<param name= "NUM_STEP" type = "int" value = "20" /> <!-- for smooth control -->
+
+</launch>

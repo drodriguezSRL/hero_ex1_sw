@@ -1,0 +1,2 @@
+ex1_serial:ex1_startup:rt_usb_9axisimu_driver:teleop
+-DCATKIN_DEVEL_PREFIX=/home/rovertx2/HERO_EX1/devel -DCMAKE_INSTALL_PREFIX=/home/rovertx2/HERO_EX1/install -G Unix Makefiles

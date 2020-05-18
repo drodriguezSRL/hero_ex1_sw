@@ -1,0 +1,38 @@
+<!-- 
+Content: Launch file to initiate all the rosbags required to record telemetry from EX1.
+Created by: David Rodriguez (davidrm@dc.tohoku.ac.jp)
+Last update: Nov. 26, 2019
+Updated by: David Rodriguez (davidrm@dc.tohoku.ac.jp)
+Notes:
+- Data that is currently beign recorded include:
+
+	1. Driving motors rotational speed in deg/s.
+	2. Steering motors absolute angle in deg. 
+	3. Current drawn by driving motors in bits. 
+	4. Positional angle of the rockers in deg. 
+
+--> 
+
+<launch>
+	<arg name="save_right_telemetry_in" default = "/home/rovertx2/HERO_EX1/src/ex1_startup/record/telemetry_right_.bag" />
+	<arg name="save_left_telemetry_in" default = "/home/rovertx2/HERO_EX1/src/ex1_startup/record/telemetry_left_.bag" />
+	<arg name="save_imu_data_in" default = "/home/rovertx2/HERO_EX1/src/ex1_startup/record/imu_data_.bag" />
+
+	<node
+		pkg="rosbag"
+		type="record" 
+		name="rosbag_telemetry_right" 
+		args="-o $(arg save_right_telemetry_in) /telemetry_right"/>
+	<node 
+		pkg="rosbag" 
+		type="record" 
+		name="rosbag_telemetry_left" 
+		args="-o $(arg save_left_telemetry_in) /telemetry_left" />
+
+	<!-- <node 
+		pkg="rosbag" 
+		type="record" 
+		name="imu_data" 
+		args="-o $(arg save_imu_data_in) /imu/data_raw /imu/temperature /imu/mag"/>  -->
+
+</launch>

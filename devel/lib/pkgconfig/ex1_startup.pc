@@ -1,0 +1,8 @@
+prefix=/home/rovertx2/HERO_EX1/devel
+
+Name: ex1_startup
+Description: Description of ex1_startup
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/rovertx2/HERO_EX1/devel/lib 
+Requires: 

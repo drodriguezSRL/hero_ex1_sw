@@ -1,0 +1,152 @@
+<!-- 
+Content: Launch file for the ex1_teleop package. Set port and baudrate. Set COBS related parameters.
+Created by: David Rodriguez (davidrm@dc.tohoku.ac.jp)
+Last update: Nov. 25, 2019
+Updated by: David Rodriguez (davidrm@dc.tohoku.ac.jp)
+Notes:
+- Rocker ID numbers are defined as follows: LEFT ROCKER = 1, RIGHT ROCKER = 2. Each wheel node has a rocker ID associated with it. This helps select which path information should be sent through. 
+- Learn more about COBS: Consisten Overhead Byte Stuffing, Stuart Cheshire and Mary Baker, IEEE/ACM Transations on Networking, 7(2), April 1999.
+--> 
+
+<launch>
+
+	<!-- include teleop.launch file 
+	<include file="$(find teleop)/launch/teleop.launch"/>
+	<include file="$(find ex1_serial)/launch/telemetry.launch"/>-->
+
+	<!--#### include config files ####
+	<rosparam command="load" file="$(find teleop)/config/cmd_map.yaml" />
+	<include file="$(find ex1_serial)/config/internal_comms.xml"/>-->
+
+	<!-- add_crc -->
+	<node 
+		pkg = "ex1_serial"
+		type = "add_crc"
+		name = "add_crc_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+	<node 
+		pkg = "ex1_serial"
+		type = "add_crc"
+		name = "add_crc_right"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "2"/>
+	</node>
+
+	<!-- cobs -->
+	<node 
+		pkg = "ex1_serial"
+		type = "cobs"
+		name = "cobs_left"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+	<node 
+		pkg = "ex1_serial"
+		type = "cobs"
+		name = "cobs_right"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "2"/>
+	</node>
+
+	<!-- serial send/read -->
+	<node 
+		pkg = "ex1_serial"
+		type = "serial_Tx_Rx"
+		name = "usb_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+	<node 
+		pkg = "ex1_serial"
+		type = "serial_Tx_Rx"
+		name = "usb_right"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "2"/>
+	</node>
+
+	<!-- detect a packet -->
+	<node 
+		pkg = "ex1_serial"
+		type = "detect_pkt"
+		name = "detect_pkt_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+	<node 
+		pkg = "ex1_serial"
+		type = "detect_pkt"
+		name = "detect_pkt_right"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "2"/>
+	</node>
+	<!-- uncobs the packet -->
+	<node 
+		pkg = "ex1_serial"
+		type = "uncobs"
+		name = "uncobs_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+	<node 
+		pkg = "ex1_serial"
+		type = "uncobs"
+		name = "uncobs_right"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "2"/>
+	</node>
+
+	<!-- validation check for telemetry packets -->
+	<node 
+		pkg = "ex1_serial"
+		type = "pkt_validation"
+		name = "checked_pkt_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+	<node 
+		pkg = "ex1_serial"
+		type = "pkt_validation"
+		name = "checked_pkt_right"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "2"/>
+	</node>
+
+</launch>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ex1_startup</name>
+  <version>1.0.0</version>
+  <description>The ex1_startup package</description>
+  <maintainer email="davidrm@dc.tohoku.ac.jp">David Rodriguez</maintainer>
+  <author email="davidrm@dc.tohoku.ac.jp">David Rodriguez</author>
+  <license>TODO</license>
+
+  <!-- Dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>ex1_serial</build_depend>
+  <build_depend>joy</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>serial</build_depend>
+  <build_depend>teleop</build_depend>
+  <build_export_depend>ex1_serial</build_export_depend>
+  <build_export_depend>joy</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>serial</build_export_depend>
+  <build_export_depend>teleop</build_export_depend>
+  <exec_depend>ex1_serial</exec_depend>
+  <exec_depend>joy</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>serial</exec_depend>
+  <exec_depend>teleop</exec_depend>
+  <depend>std_msgs</depend>
+
+</package>

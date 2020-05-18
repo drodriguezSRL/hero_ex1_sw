@@ -1,0 +1,48 @@
+cmd_dictionary: {
+"LIGHTS_ON": 0x01,
+"LIGHTS_OFF": 0x02,
+"SETSPEED_FRONT": 0x03,
+"SETSPEED_REAR": 0x04,
+"SETSTEER_FRONT": 0x05,
+"SETSTEER_REAR": 0x06,
+"VAL_SPEED_FRONT": 0x07,
+"VAL_SPEED_REAR": 0x08,
+"VAL_ANGLE_FRONT": 0x09,
+"VAL_ANGLE_REAR": 0x0A,
+"VAL_CURR_FRONT": 0x0B,
+"VAL_CURR_REAR": 0x0C,
+"VAL_ANGLE_RCK": 0x0D,
+}
+
+len_dictionary: {
+"1": 0,
+"2": 0,
+"3": 4,
+"4": 4,
+"5": 4,
+"6": 4,
+"7": 4,
+"8": 4,
+"9": 4,
+"10": 4,
+"11": 2,
+"12": 2,
+"13": 4,
+}
+
+
+cmd_list: 
+- 0x01
+- 0x02
+- 0x03
+- 0x04
+- 0x05
+- 0x06
+- 0x07
+- 0x08
+- 0x09
+- 0x0A
+- 0x0B
+- 0x0C
+- 0x0D
+

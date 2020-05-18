@@ -1,0 +1,89 @@
+<!--
+Content: Launch file for the ex1_teleop node. Parameters definition and joystick buttons&axes mapping.
+Created by: David Rodriguez (davidrm@dc.tohoku.ac.jp)
+Last update: Nov. 21, 2019
+Updated by: David Rodriguez (davidrm@dc.tohoku.ac.jp)
+
+Notes:
+- Wheels ID numbers follow a clockwise convention starting from the front-left wheel. 
+- Rocker ID numbers are defined as follows: LEFT ROCKER = 1, RIGHT ROCKER = 2. Each wheel node has a rocker ID associated with it. This helps select which path information should be sent through. 
+-->
+
+<launch>
+
+	<!--#### include config files ####-->
+	<include file = "$(find teleop)/config/motion_control.xml"/>
+	<include file = "$(find teleop)/config/btn_axs_map.xml"/>
+	<!--#### include config files ####-->
+	<include file = "$(find ex1_serial)/config/internal_comms.xml"/>
+
+	<!--#### run nodes ####-->
+	<!-- joy node -->
+	<node
+		pkg = "joy"
+		type = "joy_node"
+		name = "ps4_joy"
+		respawn= "true" >
+		<param
+			name = "dev"
+			type = "string"
+			value = "/dev/input/js0" />
+		<param
+			name = "deadzone"
+			type = "double"
+			value = "0.1" />
+	</node>
+	<!-- teleop nodes -->
+	<node
+		pkg = "teleop"
+		type = "ex1_teleop"
+		name = "testing"
+		respawn = "true"
+		output = "screen">
+		<param 
+			name = "wheel_id"
+			type = "int" 
+			value = "9" />
+		<param 
+			name = "rocker_id"
+			type = "int" 
+			value = "1" /> 
+	</node>	
+	<!-- add_crc -->
+	<node 
+		pkg = "ex1_serial"
+		type = "add_crc"
+		name = "add_crc_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+
+
+	<!-- cobs -->
+	<node 
+		pkg = "ex1_serial"
+		type = "cobs"
+		name = "cobs_left"	
+		respawn= "true" >
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+
+	<!-- serial send -->
+	<node 
+		pkg = "ex1_serial"
+		type = "serial_send"
+		name = "usb_left"	
+		respawn= "true">
+		<param
+			name = "rocker_id"
+			type = "int"
+			value = "1"/>
+	</node>
+
+</launch>

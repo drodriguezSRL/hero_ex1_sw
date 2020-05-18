@@ -1,0 +1,12 @@
+<!-- Internal communication protocol parameters --> 
+<launch>
+<param name = "port_left" value = "/dev/ttyUSB0" type="str"/>
+<param name = "port_right" value = "/dev/ttyUSB1" type="str"/>
+<param name = "baudrate" value = "115200" type="int" /> 
+<param name = "MAX_PACKET_SIZE" value = "24" type = "int" />
+<param name = "MIN_PACKET_SIZE" value = "11" type = "int" />
+<param name = "MAX_BYTE_ARGS_PACKET" value = "16" type = "int" />
+<param name = "PACKET_LEN_WITHOUT_ARGS" value = "8" type = "int" />
+<param name = "COBS_DELIMETER" value = "0" type = "int" />
+<param name = "MAX_PROCESSING_TIME_MS" value = "2" type = "int" /> 
+</launch>

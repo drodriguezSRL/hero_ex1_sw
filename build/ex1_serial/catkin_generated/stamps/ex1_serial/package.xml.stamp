@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ex1_serial</name>
+  <version>1.0.0</version>
+  <description>The ex1_serial package to operate the HERO EXPLORER 1 rover.</description>
+  <maintainer email="davidrm@dc.tohoku.ac.jp">David Rodriguez</maintainer>
+  <author email="davidrm@dc.tohoku.ac.jp">David Rodriguez</author>
+  <license>MIT</license>
+
+  <!-- Dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <depend>teleop</depend>
+  <depend>std_msgs</depend>
+  <depend>serial</depend>
+</package>

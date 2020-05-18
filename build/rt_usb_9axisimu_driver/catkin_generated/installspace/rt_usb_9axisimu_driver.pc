@@ -1,0 +1,8 @@
+prefix=/home/rovertx2/HERO_EX1/install
+
+Name: rt_usb_9axisimu_driver
+Description: Description of rt_usb_9axisimu_driver
+Version: 0.1.2
+Cflags: -I/home/rovertx2/HERO_EX1/install/include
+Libs: -L/home/rovertx2/HERO_EX1/install/lib 
+Requires: roscpp rospy sensor_msgs std_msgs
