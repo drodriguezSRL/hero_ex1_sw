@@ -64,7 +64,7 @@ High-speed Exploration Rover Team, Explorer 1 Operating System Version 1. Rev. 0
 
 ## Authors
 
-* **David Rodriguez** - *High-level developer*
+* **David Rodriguez** - *PI, High-level developer*
 * **Alan Allart** - *Low-level developer*
 
 See also a list of contributors
